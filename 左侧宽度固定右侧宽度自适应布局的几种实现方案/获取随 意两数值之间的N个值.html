@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function shuji(arr, len, max, min) {
+            //判断用户要获取的个数  是否小于等于 最大值件最小值    
+            if ((max - min) <= len) {
+                console.log("超过了可获取的个数，请重新输入范围");
+                return;
+            }
+
+            //判断数组中的个数是不是和要获取的个数相等    相等   就进行数组排序
+            if (arr.length >= len) {
+                arr.sort(function (a, b) {
+                    return a - b;
+                })
+                return arr
+            }
+            //获取随机数
+            var geshu = Math.floor(Math.random() * (max - min + 1)) + min;
+            // 循环arr数组
+            for(var i = 0; i<arr.lenth;i++){
+                // 判断数组中的值是不是等于刚生成的随机数    相等就重新调用函数
+                if(geshu == arr[i]){
+                    shuji(arr, 10, 100, 10);
+                    return;
+                }
+
+              
+            }
+            // 将生成的数push数组中
+            arr.push(geshu);
+                // 再进行下一次”
+                shuji(arr, 10, 100, 10)
+                return arr;
+        }
+        var arr = [];
+        console.log(shuji(arr, 10, 100, 10));
+
+
+    </script>
+</body>
+
+</html>
